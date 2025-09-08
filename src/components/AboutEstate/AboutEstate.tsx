@@ -205,22 +205,6 @@ const AboutEstate = () => {
                   ›
                 </button>
               </div>
-              
-              <div className="gallery-thumbnails">
-                {estateImages.map((image, index) => (
-                  <button
-                    key={index}
-                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentImageIndex(index)}
-                  >
-                    <img 
-                      src={`/images/about/thumbnails/${image.src.split('/').pop()}`}
-                      alt={image.alt}
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -240,6 +224,24 @@ const AboutEstate = () => {
                 and let the sacred beauty of this region enhance your spiritual journey.
               </p>
             </div>
+          </div>
+        </div>
+
+        <div className="gallery-thumbnails-fullwidth">
+          <div className={`gallery-thumbnails ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
+            {estateImages.map((image, index) => (
+              <button
+                key={index}
+                className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                onClick={() => setCurrentImageIndex(index)}
+              >
+                <img 
+                  src={`/images/about/thumbnails/${image.src.split('/').pop()}`}
+                  alt={image.alt}
+                  loading="lazy"
+                />
+              </button>
+            ))}
           </div>
         </div>
 
