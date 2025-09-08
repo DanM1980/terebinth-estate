@@ -91,7 +91,7 @@ const LocationMap = () => {
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen=""
+                allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Terebinth Estate Location - Neot Golan"
@@ -103,13 +103,13 @@ const LocationMap = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className={`location-info ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <h3>Perfectly Positioned in Neot Golan</h3>
               <p>
-                Located in the beautiful Neot Golan settlement in the Golan Heights, 
-                Terebinth Estate offers easy access to all the most important biblical sites. 
-                Our central location means you can visit multiple holy sites in a single day 
+                Located in the beautiful Neot Golan settlement in the Golan Heights,
+                Terebinth Estate offers easy access to all the most important biblical sites.
+                Our central location means you can visit multiple holy sites in a single day
                 while returning to the comfort and tranquility of our luxury suites.
               </p>
               <div className="location-stats">
@@ -126,7 +126,7 @@ const LocationMap = () => {
                   <span className="stat-label">Luxury Suites Available</span>
                 </div>
               </div>
-              <button 
+              <button
                 className="btn btn-primary"
                 onClick={handleDirectionsClick}
               >
@@ -141,7 +141,7 @@ const LocationMap = () => {
             </h3>
             <div className="sites-grid">
               {nearbySites.map((site, index) => (
-                <div 
+                <div
                   key={index}
                   className={`site-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
                   style={{ animationDelay: `${index * 0.1}s` }}

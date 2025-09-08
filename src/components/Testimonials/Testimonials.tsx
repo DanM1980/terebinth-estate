@@ -68,7 +68,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTestimonial((prevIndex) => 
+      setCurrentTestimonial((prevIndex) =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
     }, 5000);
@@ -77,18 +77,18 @@ const Testimonials = () => {
   }, [testimonials.length]);
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prevIndex) => 
+    setCurrentTestimonial((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prevIndex) => 
+    setCurrentTestimonial((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <span key={index} className={`star ${index < rating ? 'filled' : ''}`}>
         ★
@@ -122,10 +122,10 @@ const Testimonials = () => {
                   {renderStars(testimonials[currentTestimonial].rating)}
                 </div>
               </div>
-              
+
               <div className="testimonial-author">
                 <div className="author-image">
-                  <img 
+                  <img
                     src={testimonials[currentTestimonial].image}
                     alt={testimonials[currentTestimonial].name}
                     loading="lazy"
@@ -138,7 +138,7 @@ const Testimonials = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="testimonial-navigation">
               <button className="nav-btn prev" onClick={prevTestimonial}>
                 ‹
@@ -160,7 +160,7 @@ const Testimonials = () => {
 
           <div className="testimonials-grid">
             {testimonials.map((testimonial, index) => (
-              <div 
+              <div
                 key={testimonial.id}
                 className={`testimonial-mini ${isVisible ? 'fade-in visible' : 'fade-in'} ${index === currentTestimonial ? 'active' : ''}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -170,7 +170,7 @@ const Testimonials = () => {
                   "{testimonial.quote.substring(0, 80)}..."
                 </div>
                 <div className="mini-author">
-                  <img 
+                  <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     loading="lazy"

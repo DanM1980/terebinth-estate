@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './ContactCTA.css';
 
-const ContactCTA = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  groupSize: string;
+  message: string;
+}
+
+const ContactCTA: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     groupSize: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,7 +43,7 @@ const ContactCTA = () => {
     };
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -43,7 +51,7 @@ const ContactCTA = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
@@ -51,7 +59,7 @@ const ContactCTA = () => {
     try {
       // Simulate form submission - replace with actual API endpoint
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       // Here you would typically send the data to your backend or email service
       // For now, we'll just show a success message
       setSubmitStatus('success');
@@ -95,11 +103,11 @@ const ContactCTA = () => {
             <div className={`info-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <h3>Get in Touch</h3>
               <p>
-                We're here to help you plan the perfect spiritual journey. Whether you're 
-                traveling as a family, church group, or seeking a personal retreat, we'll 
+                We're here to help you plan the perfect spiritual journey. Whether you're
+                traveling as a family, church group, or seeking a personal retreat, we'll
                 work with you to create an unforgettable experience.
               </p>
-              
+
               <div className="contact-methods">
                 <div className="contact-method">
                   <div className="method-icon">
@@ -108,7 +116,7 @@ const ContactCTA = () => {
                   <div className="method-content">
                     <h4>WhatsApp</h4>
                     <p>Quick responses and easy booking</p>
-                    <button 
+                    <button
                       className="btn btn-primary"
                       onClick={handleWhatsAppClick}
                     >
@@ -124,7 +132,7 @@ const ContactCTA = () => {
                   <div className="method-content">
                     <h4>Phone Call</h4>
                     <p>Speak directly with our team</p>
-                    <button 
+                    <button
                       className="btn btn-secondary"
                       onClick={handlePhoneClick}
                     >
@@ -155,7 +163,7 @@ const ContactCTA = () => {
             <div className={`form-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <h3>Send Us a Message</h3>
               <p>Fill out the form below and we'll get back to you within 24 hours.</p>
-              
+
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label htmlFor="name">Full Name *</label>
@@ -220,13 +228,13 @@ const ContactCTA = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows="4"
+                    rows={4}
                     placeholder="Tell us about your spiritual journey plans, preferred dates, and any special requirements..."
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="btn btn-gold"
                   disabled={isSubmitting}
                 >

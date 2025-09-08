@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './SpiritualConnection.css';
 
-const SpiritualConnection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+interface SpiritualImage {
+  src: string;
+  alt: string;
+  title: string;
+  quote: string;
+  citation: string;
+}
+
+const SpiritualConnection: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   // Array of spiritual images
-  const spiritualImages = [
+  const spiritualImages: SpiritualImage[] = [
     {
       src: '/images/spiritual/IMG_20210215_170417-EFFECTS.jpg',
       alt: 'Spiritual landscape view',
@@ -104,7 +112,7 @@ const SpiritualConnection = () => {
   // Auto-rotate images
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
+      setCurrentImageIndex((prevIndex) =>
         prevIndex === spiritualImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 6000);
@@ -112,14 +120,14 @@ const SpiritualConnection = () => {
     return () => clearInterval(interval);
   }, [spiritualImages.length]);
 
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+  const nextImage = (): void => {
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === spiritualImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+  const prevImage = (): void => {
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? spiritualImages.length - 1 : prevIndex - 1
     );
   };
@@ -133,19 +141,19 @@ const SpiritualConnection = () => {
               Experience the Holy Land
             </h2>
             <p className={`spiritual-description ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
-              Our estate is located in the heart of the Golan Heights, overlooking the Sea of Galilee. 
-              Just a short drive from Capernaum, the Mount of Beatitudes, and the Jordan River – 
+              Our estate is located in the heart of the Golan Heights, overlooking the Sea of Galilee.
+              Just a short drive from Capernaum, the Mount of Beatitudes, and the Jordan River –
               where pilgrims come to experience the Holy Land.
             </p>
             <p className={`spiritual-description ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
-              Wake up to breathtaking views of the same landscapes that Jesus walked, and let the 
+              Wake up to breathtaking views of the same landscapes that Jesus walked, and let the
               spiritual significance of this sacred region enhance your pilgrimage experience.
             </p>
           </div>
-          
+
           <div className="spiritual-image">
             <div className={`image-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
-              <img 
+              <img
                 src={spiritualImages[currentImageIndex].src}
                 alt={spiritualImages[currentImageIndex].alt}
                 loading="lazy"
@@ -159,7 +167,7 @@ const SpiritualConnection = () => {
                   <cite>{spiritualImages[currentImageIndex].citation}</cite>
                 </div>
               </div>
-              
+
               {/* Navigation arrows */}
               <button className="spiritual-nav prev" onClick={prevImage}>
                 ‹
@@ -167,7 +175,7 @@ const SpiritualConnection = () => {
               <button className="spiritual-nav next" onClick={nextImage}>
                 ›
               </button>
-              
+
               {/* Image counter */}
               <div className="spiritual-counter">
                 <span>{currentImageIndex + 1} / {spiritualImages.length}</span>
@@ -175,7 +183,7 @@ const SpiritualConnection = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="spiritual-features">
           <div className={`feature-item ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
             <div className="feature-icon">
@@ -184,7 +192,7 @@ const SpiritualConnection = () => {
             <h3>Sacred Sites</h3>
             <p>Minutes from Capernaum, Mount of Beatitudes, and the Jordan River</p>
           </div>
-          
+
           <div className={`feature-item ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
             <div className="feature-icon">
               <span>🌅</span>
@@ -192,7 +200,7 @@ const SpiritualConnection = () => {
             <h3>Biblical Views</h3>
             <p>Wake up to the same landscapes that Jesus walked and taught</p>
           </div>
-          
+
           <div className={`feature-item ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
             <div className="feature-icon">
               <span>🙏</span>

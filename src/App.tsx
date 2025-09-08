@@ -8,7 +8,7 @@ import LocationMap from './components/LocationMap';
 import ContactCTA from './components/ContactCTA';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <HeroSection />
@@ -20,6 +20,6 @@ function App() {
       <ContactCTA />
     </div>
   );
-}
+};
 
 export default App;
