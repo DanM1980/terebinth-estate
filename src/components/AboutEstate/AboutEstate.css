@@ -131,7 +131,7 @@
 
 .gallery-thumbnails-fullwidth {
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .gallery-thumbnails-fullwidth .gallery-thumbnails {
@@ -140,7 +140,7 @@
   background: transparent;
   border-radius: 0;
   box-shadow: none;
-  padding: 1.5rem;
+  padding: 1.5rem 0 0 0;
 }
 
 .thumbnail {
