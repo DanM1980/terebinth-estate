@@ -39,6 +39,10 @@
   gap: 4rem;
   align-items: start;
   margin-bottom: 4rem;
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
 .estate-gallery {
@@ -133,9 +137,9 @@
 .gallery-thumbnails-fullwidth .gallery-thumbnails {
   max-height: none;
   overflow-y: visible;
-  background: var(--white);
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   padding: 1.5rem;
 }
 
@@ -244,6 +248,7 @@
   .estate-content {
     grid-template-columns: 1fr;
     gap: 2rem;
+    padding: 1.5rem;
   }
   
   .estate-description {
@@ -276,6 +281,10 @@
 }
 
 @media (max-width: 480px) {
+  .estate-content {
+    padding: 1rem;
+  }
+  
   .gallery-main {
     height: 250px;
   }

@@ -151,7 +151,7 @@ const AboutEstate = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
+      setCurrentImageIndex((prevIndex) =>
         prevIndex === estateImages.length - 1 ? 0 : prevIndex + 1
       );
     }, 4000);
@@ -160,13 +160,13 @@ const AboutEstate = () => {
   }, [estateImages.length]);
 
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === estateImages.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? estateImages.length - 1 : prevIndex - 1
     );
   };
@@ -184,6 +184,24 @@ const AboutEstate = () => {
         </div>
 
         <div className="estate-content">
+          <div className="estate-description">
+            <div className={`description-content ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
+              <h3>Luxury Countryside Suites</h3>
+              <p>
+                Our estate features four beautifully designed luxury countryside suites that 
+                seamlessly blend traditional wood and stone architecture with modern amenities. 
+                Each suite is thoughtfully crafted to provide the perfect balance of comfort 
+                and spiritual tranquility.
+              </p>
+              <p>
+                Whether you're traveling as a family, a church group, or seeking a personal 
+                retreat, our estate offers the ideal setting for your Holy Land pilgrimage. 
+                Wake up to breathtaking views of the Golan Heights and the Sea of Galilee, 
+                and let the sacred beauty of this region enhance your spiritual journey.
+              </p>
+            </div>
+          </div>
+
           <div className="estate-gallery">
             <div className={`gallery-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <div className="gallery-main">
@@ -207,24 +225,6 @@ const AboutEstate = () => {
               </div>
             </div>
           </div>
-
-          <div className="estate-description">
-            <div className={`description-content ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
-              <h3>Luxury Countryside Suites</h3>
-              <p>
-                Our estate features four beautifully designed luxury countryside suites that 
-                seamlessly blend traditional wood and stone architecture with modern amenities. 
-                Each suite is thoughtfully crafted to provide the perfect balance of comfort 
-                and spiritual tranquility.
-              </p>
-              <p>
-                Whether you're traveling as a family, a church group, or seeking a personal 
-                retreat, our estate offers the ideal setting for your Holy Land pilgrimage. 
-                Wake up to breathtaking views of the Golan Heights and the Sea of Galilee, 
-                and let the sacred beauty of this region enhance your spiritual journey.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div className="gallery-thumbnails-fullwidth">
@@ -235,7 +235,7 @@ const AboutEstate = () => {
                 className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                 onClick={() => setCurrentImageIndex(index)}
               >
-                <img 
+                <img
                   src={`/images/about/thumbnails/${image.src.split('/').pop()}`}
                   alt={image.alt}
                   loading="lazy"
@@ -247,7 +247,7 @@ const AboutEstate = () => {
 
         <div className="amenities-grid">
           {amenities.map((amenity, index) => (
-            <div 
+            <div
               key={index}
               className={`amenity-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -261,18 +261,18 @@ const AboutEstate = () => {
           ))}
         </div>
       </div>
-      
+
       {/* Lightbox */}
       {isLightboxOpen && (
         <div className="lightbox" onClick={() => setIsLightboxOpen(false)}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button 
+            <button
               className="lightbox-close"
               onClick={() => setIsLightboxOpen(false)}
             >
               ×
             </button>
-            <img 
+            <img
               src={estateImages[currentImageIndex].src}
               alt={estateImages[currentImageIndex].alt}
             />
@@ -280,13 +280,13 @@ const AboutEstate = () => {
               <h3>{estateImages[currentImageIndex].title}</h3>
               <p>{currentImageIndex + 1} / {estateImages.length}</p>
             </div>
-            <button 
+            <button
               className="lightbox-nav prev"
               onClick={prevImage}
             >
               ‹
             </button>
-            <button 
+            <button
               className="lightbox-nav next"
               onClick={nextImage}
             >
