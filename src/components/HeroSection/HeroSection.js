@@ -1,0 +1,120 @@
+import React, { useState, useEffect } from 'react';
+import './HeroSection.css';
+
+const HeroSection = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Array of hero background images
+  const heroImages = [
+    '/images/hero/DJI_0011_10.jpg',
+    '/images/hero/DJI_0011_13.jpg',
+    '/images/hero/GX010233_stabilized.mp4_snapshot_00.44.705~2.jpg'
+  ];
+
+  // Cookie management functions
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
+  const setCookie = (name, value, days = 30) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  };
+
+  // Initialize background image from cookie or random
+  useEffect(() => {
+    const savedIndex = getCookie('heroImageIndex');
+    if (savedIndex !== null) {
+      const nextIndex = (parseInt(savedIndex) + 1) % heroImages.length;
+      setCurrentImageIndex(nextIndex);
+      setCookie('heroImageIndex', nextIndex.toString());
+    } else {
+      const randomIndex = Math.floor(Math.random() * heroImages.length);
+      setCurrentImageIndex(randomIndex);
+      setCookie('heroImageIndex', randomIndex.toString());
+    }
+    setIsLoaded(true);
+  }, [heroImages.length]);
+
+  // Parallax scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.hero-background');
+      if (parallax) {
+        const speed = scrolled * 0.5;
+        parallax.style.transform = `translateY(${speed}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleWhatsAppClick = () => {
+    // Replace with actual WhatsApp number
+    window.open('https://wa.me/972XXXXXXXXX?text=Hello! I would like to book a stay at Terebinth Estate.', '_blank');
+  };
+
+  const handlePhoneClick = () => {
+    // Replace with actual phone number
+    window.location.href = 'tel:+972XXXXXXXXX';
+  };
+
+
+
+  return (
+    <section className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
+      <div className="hero-background">
+        <div className="hero-image-container">
+          <img 
+            src={heroImages[currentImageIndex]}
+            alt="Galilee aerial view"
+            className="hero-background-image"
+            loading="eager"
+          />
+          <div className="hero-image-overlay"></div>
+        </div>
+        <div className="hero-overlay"></div>
+      </div>
+      
+      <div className="hero-content">
+        <div className="container">
+          <div className="hero-text">
+            <h1 className="hero-title fade-in">
+              Walk in the Footsteps of Jesus – Stay at the Heart of the Galilee
+            </h1>
+            <h2 className="hero-subtitle fade-in">
+              Luxury countryside suites in the Golan Heights, just minutes from the Sea of Galilee and the Jordan River.
+            </h2>
+            <div className="hero-buttons fade-in">
+              <button 
+                className="btn btn-primary"
+                onClick={handleWhatsAppClick}
+              >
+                Book Your Stay
+              </button>
+              <button 
+                className="btn btn-secondary"
+                onClick={handlePhoneClick}
+              >
+                Call Us Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="scroll-indicator">
+        <div className="scroll-arrow"></div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;

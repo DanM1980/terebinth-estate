@@ -1,0 +1,305 @@
+.spiritual-connection {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);
+  position: relative;
+}
+
+.spiritual-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.spiritual-text {
+  padding-right: 2rem;
+}
+
+.spiritual-title {
+  color: var(--primary-blue);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.spiritual-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), #fbbf24);
+  border-radius: 2px;
+}
+
+.spiritual-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--gray-700);
+  margin-bottom: 1.5rem;
+}
+
+.spiritual-image {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.image-container img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: bottom;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  padding: 2rem;
+  color: var(--white);
+}
+
+.biblical-quote {
+  text-align: center;
+}
+
+.biblical-quote blockquote {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.biblical-quote blockquote::before {
+  content: '"';
+  font-size: 3rem;
+  color: var(--gold);
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  font-family: serif;
+}
+
+.biblical-quote cite {
+  font-size: 0.9rem;
+  color: var(--light-gold);
+  font-weight: 600;
+}
+
+.biblical-quote h3 {
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Navigation arrows */
+.spiritual-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.spiritual-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.spiritual-nav.prev {
+  left: 20px;
+}
+
+.spiritual-nav.next {
+  right: 20px;
+}
+
+/* Image counter */
+.spiritual-counter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--white);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.spiritual-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-item {
+  text-align: center;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.feature-item h3 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.feature-item p {
+  color: var(--gray-600);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Animation delays */
+.spiritual-connection .fade-in:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.spiritual-connection .fade-in:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.spiritual-connection .fade-in:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.spiritual-connection .fade-in:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.spiritual-connection .fade-in:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.spiritual-connection .fade-in:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .spiritual-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .spiritual-text {
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .spiritual-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .image-container {
+    transform: none;
+  }
+  
+  .image-container:hover {
+    transform: none;
+  }
+  
+  .spiritual-features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .spiritual-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+  
+  .spiritual-nav.prev {
+    left: 10px;
+  }
+  
+  .spiritual-nav.next {
+    right: 10px;
+  }
+  
+  .spiritual-counter {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .feature-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .spiritual-description {
+    font-size: 1.1rem;
+  }
+  
+  .image-container img {
+    height: 300px;
+  }
+  
+  .image-overlay {
+    padding: 1.5rem;
+  }
+  
+  .biblical-quote blockquote {
+    font-size: 1rem;
+  }
+  
+  .biblical-quote blockquote::before {
+    font-size: 2rem;
+    top: -15px;
+  }
+}
