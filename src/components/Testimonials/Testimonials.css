@@ -8,7 +8,7 @@
 }
 
 .section-title {
-  color: var(--primary-blue);
+  color: #1e3a8a !important;
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
@@ -28,7 +28,7 @@
 
 .section-subtitle {
   font-size: 1.3rem;
-  color: var(--gray-600);
+  color: #1e3a8a !important;
   max-width: 600px;
   margin: 0 auto;
 }
