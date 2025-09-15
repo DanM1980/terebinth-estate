@@ -187,7 +187,7 @@ const AboutEstate = () => {
           <div className="estate-gallery">
             <div className={`gallery-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <div className="gallery-main">
-                <img 
+                <img
                   src={estateImages[currentImageIndex].src}
                   alt={estateImages[currentImageIndex].alt}
                   loading="lazy"
@@ -205,7 +205,7 @@ const AboutEstate = () => {
                   ›
                 </button>
               </div>
-              
+
               <div className="gallery-thumbnails">
                 {estateImages.map((image, index) => (
                   <button
@@ -213,7 +213,7 @@ const AboutEstate = () => {
                     className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
                     onClick={() => setCurrentImageIndex(index)}
                   >
-                    <img 
+                    <img
                       src={`/images/about/thumbnails/${image.src.split('/').pop()}`}
                       alt={image.alt}
                       loading="lazy"
@@ -228,15 +228,15 @@ const AboutEstate = () => {
             <div className={`description-content ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <h3>Luxury Countryside Suites</h3>
               <p>
-                Our estate features four beautifully designed luxury countryside suites that 
-                seamlessly blend traditional wood and stone architecture with modern amenities. 
-                Each suite is thoughtfully crafted to provide the perfect balance of comfort 
+                Our estate features four beautifully designed luxury countryside suites that
+                seamlessly blend traditional wood and stone architecture with modern amenities.
+                Each suite is thoughtfully crafted to provide the perfect balance of comfort
                 and spiritual tranquility.
               </p>
               <p>
-                Whether you're traveling as a family, a church group, or seeking a personal 
-                retreat, our estate offers the ideal setting for your Holy Land pilgrimage. 
-                Wake up to breathtaking views of the Golan Heights and the Sea of Galilee, 
+                Whether you're traveling as a family, a church group, or seeking a personal
+                retreat, our estate offers the ideal setting for your Holy Land pilgrimage.
+                Wake up to breathtaking views of the Golan Heights and the Sea of Galilee,
                 and let the sacred beauty of this region enhance your spiritual journey.
               </p>
             </div>
