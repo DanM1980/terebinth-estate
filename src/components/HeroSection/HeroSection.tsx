@@ -1,16 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './HeroSection.css';
 
 const HeroSection: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [videoFailed, setVideoFailed] = useState<boolean>(false);
 
-  // Array of hero background images
-  const heroImages: string[] = [
+  // Array of video sources
+  const videoSources: string[] = useMemo(() => [
+    '/videos/hero/fields.mp4',
+    '/videos/hero/lake.mp4'
+  ], []);
+
+  // Array of hero background images (fallback)
+  const heroImages: string[] = useMemo(() => [
     '/images/hero/DJI_0011_10.jpg',
     '/images/hero/DJI_0011_13.jpg',
     '/images/hero/GX010233_stabilized.mp4_snapshot_00.44.705~2.jpg'
-  ];
+  ], []);
+
+  // Select video randomly on each page load
+  const [selectedVideo] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * videoSources.length);
+    return videoSources[randomIndex];
+  });
 
   // Cookie management functions
   const getCookie = (name: string): string | null => {
@@ -26,7 +39,7 @@ const HeroSection: React.FC = () => {
     document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
   };
 
-  // Initialize background image from cookie or random
+  // Initialize background image from cookie or random (for fallback)
   useEffect(() => {
     const savedIndex = getCookie('heroImageIndex');
     if (savedIndex !== null) {
@@ -41,20 +54,22 @@ const HeroSection: React.FC = () => {
     setIsLoaded(true);
   }, [heroImages.length]);
 
-  // Parallax scroll effect
+  // Preload all videos and fallback images
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('.hero-background') as HTMLElement;
-      if (parallax) {
-        const speed = scrolled * 0.5;
-        parallax.style.transform = `translateY(${speed}px)`;
-      }
-    };
+    // Preload all videos
+    videoSources.forEach(videoSrc => {
+      const video = document.createElement('video');
+      video.src = videoSrc;
+      video.preload = 'metadata';
+    });
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    // Preload all fallback images
+    heroImages.forEach(imageSrc => {
+      const image = new Image();
+      image.src = imageSrc;
+    });
+  }, [videoSources, heroImages]);
+
 
   const handleWhatsAppClick = (): void => {
     // Replace with actual WhatsApp number
@@ -70,18 +85,32 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className={`hero-section ${isLoaded ? 'loaded' : ''}`}>
-      <div className="hero-background">
-        <div className="hero-image-container">
-          <img
-            src={heroImages[currentImageIndex]}
-            alt="Galilee aerial view"
-            className="hero-background-image"
-            loading="eager"
-          />
-          <div className="hero-image-overlay"></div>
+      {!videoFailed ? (
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={() => setVideoFailed(true)}
+        >
+          <source src={selectedVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      ) : (
+        <div className="hero-background">
+          <div className="hero-image-container">
+            <img
+              src={heroImages[currentImageIndex]}
+              alt="Galilee aerial view"
+              className="hero-background-image"
+              loading="eager"
+            />
+            <div className="hero-image-overlay"></div>
+          </div>
+          <div className="hero-overlay"></div>
         </div>
-        <div className="hero-overlay"></div>
-      </div>
+      )}
 
       <div className="hero-content">
         <div className="container">

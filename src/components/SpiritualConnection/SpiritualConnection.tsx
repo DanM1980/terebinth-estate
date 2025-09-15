@@ -84,6 +84,13 @@ const SpiritualConnection: React.FC = () => {
       title: 'My Help Cometh',
       quote: '"I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the Lord, which made heaven and earth."',
       citation: 'Psalm 121:1-2'
+    },
+    {
+      src: '/images/spiritual/DSC_0065.JPG',
+      alt: 'Beautiful Golan Heights landscape',
+      title: 'The Lord\'s Blessing',
+      quote: '"The Lord bless thee, and keep thee: The Lord make his face shine upon thee, and be gracious unto thee."',
+      citation: 'Numbers 6:24-25'
     }
   ];
 
