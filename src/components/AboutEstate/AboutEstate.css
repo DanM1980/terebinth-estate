@@ -258,12 +258,20 @@
   }
   
   .amenities-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
   
   .amenity-card {
     padding: 1.5rem;
+  }
+  
+  .amenity-card h4 {
+    font-size: 1.1rem;
+  }
+  
+  .amenity-card p {
+    font-size: 0.9rem;
   }
 }
 

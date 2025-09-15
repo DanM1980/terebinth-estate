@@ -536,6 +536,24 @@ const LocationMap: React.FC = () => {
   const [currentZoom, setCurrentZoom] = useState(11);
   const [selectedSiteIndex, setSelectedSiteIndex] = useState<number | null>(null);
 
+  // Set initial zoom based on screen size
+  useEffect(() => {
+    const updateZoom = () => {
+      const isMobile = window.innerWidth <= 768;
+      setCurrentZoom(isMobile ? 10 : 11);
+    };
+
+    // Set initial zoom
+    updateZoom();
+
+    // Listen for window resize
+    window.addEventListener('resize', updateZoom);
+
+    return () => {
+      window.removeEventListener('resize', updateZoom);
+    };
+  }, []);
+
   const handleZoomIn = () => {
     setCurrentZoom(prev => Math.min(prev + 1, 20));
   };
