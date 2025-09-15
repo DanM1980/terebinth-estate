@@ -110,7 +110,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
                margin-bottom: 5px;
              ">
                <img 
-                 src={getPublicPath('logo.png')} 
+                 src="${getPublicPath('logo.png')}" 
                  alt="Terebinth Estate Logo" 
                  style="
                    width: 45px;
