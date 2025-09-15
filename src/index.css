@@ -44,6 +44,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 
+/* Section Titles - Global Default */
+.section-title {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-subtitle {
+  color: var(--primary-blue);
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 h1 {
   font-size: 3.5rem;
   font-weight: 900;

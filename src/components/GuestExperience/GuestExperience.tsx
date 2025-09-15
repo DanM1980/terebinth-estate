@@ -67,7 +67,7 @@ const GuestExperience = () => {
 
         <div className="experiences-grid">
           {experiences.map((experience, index) => (
-            <div 
+            <div
               key={index}
               className={`experience-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
               style={{ animationDelay: `${index * 0.2}s` }}
@@ -88,20 +88,20 @@ const GuestExperience = () => {
           <div className="cta-content">
             <h3>Ready to Begin Your Spiritual Journey?</h3>
             <p>
-              Join hundreds of pilgrims who have found peace, inspiration, and deeper faith 
-              during their stay at Terebinth Estate. Let us help you create an unforgettable 
+              Join hundreds of pilgrims who have found peace, inspiration, and deeper faith
+              during their stay at Terebinth Estate. Let us help you create an unforgettable
               Holy Land experience.
             </p>
             <div className="cta-buttons">
-              <button 
+              <button
                 className="btn btn-primary"
-                onClick={() => window.open('https://wa.me/972XXXXXXXXX?text=Hello! I would like to learn more about your guided tours and group hosting.', '_blank')}
+                onClick={() => window.open('https://wa.me/972526658209?text=Hello! I would like to learn more about your guided tours and group hosting.', '_blank')}
               >
                 Learn More
               </button>
-              <button 
+              <button
                 className="btn btn-gold"
-                onClick={() => window.open('https://wa.me/972XXXXXXXXX?text=Hello! I would like to book a stay for my group.', '_blank')}
+                onClick={() => window.open('https://wa.me/972526658209?text=Hello! I would like to book a stay for my group.', '_blank')}
               >
                 Book for Group
               </button>

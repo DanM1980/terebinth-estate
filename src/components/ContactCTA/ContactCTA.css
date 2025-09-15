@@ -28,12 +28,7 @@
   margin-bottom: 4rem;
 }
 
-.section-title {
-  color: var(--white);
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
-}
+/* Section title uses global default from index.css */
 
 .section-title::after {
   content: '';
@@ -47,11 +42,17 @@
   border-radius: 2px;
 }
 
-.section-subtitle {
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  margin: 0 auto;
+/* Section subtitle uses global default from index.css */
+
+/* White text overrides for ContactCTA section */
+.contact-cta .section-title {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.contact-cta .section-subtitle {
+  color: #ffffff !important;
+  font-weight: 500;
 }
 
 .contact-content {

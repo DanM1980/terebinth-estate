@@ -73,12 +73,12 @@ const HeroSection: React.FC = () => {
 
   const handleWhatsAppClick = (): void => {
     // Replace with actual WhatsApp number
-    window.open('https://wa.me/972XXXXXXXXX?text=Hello! I would like to book a stay at Terebinth Estate.', '_blank');
+    window.open('https://wa.me/972526658209?text=Hello! I would like to book a stay at Terebinth Estate.', '_blank');
   };
 
   const handlePhoneClick = (): void => {
     // Replace with actual phone number
-    window.location.href = 'tel:+972XXXXXXXXX';
+    window.location.href = 'tel:+972526658209';
   };
 
 

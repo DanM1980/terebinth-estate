@@ -1,10 +1,10 @@
 import React from 'react';
 import HeroSection from './components/HeroSection';
 import SpiritualConnection from './components/SpiritualConnection';
-import AboutEstate from './components/AboutEstate';
+import LocationMap from './components/LocationMap';
+
 import GuestExperience from './components/GuestExperience';
 import Testimonials from './components/Testimonials';
-import LocationMap from './components/LocationMap';
 import ContactCTA from './components/ContactCTA';
 import './App.css';
 
@@ -13,10 +13,10 @@ const App: React.FC = () => {
     <div className="App">
       <HeroSection />
       <SpiritualConnection />
-      <AboutEstate />
+      <LocationMap />
+
       <GuestExperience />
       <Testimonials />
-      <LocationMap />
       <ContactCTA />
     </div>
   );

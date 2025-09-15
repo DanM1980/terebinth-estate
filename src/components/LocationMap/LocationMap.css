@@ -1,5 +1,5 @@
 .location-map {
-  background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);
+  background: var(--white);
   position: relative;
 }
 
@@ -26,12 +26,7 @@
   margin-bottom: 4rem;
 }
 
-.section-title {
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
-}
+/* Section title uses global default from index.css */
 
 .section-title::after {
   content: '';
@@ -45,12 +40,7 @@
   border-radius: 2px;
 }
 
-.section-subtitle {
-  font-size: 1.3rem;
-  color: var(--gray-700);
-  max-width: 600px;
-  margin: 0 auto;
-}
+/* Section subtitle uses global default from index.css */
 
 .location-content {
   display: flex;

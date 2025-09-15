@@ -1,5 +1,24 @@
 .about-estate {
-  background: var(--white);
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);
+  position: relative;
+}
+
+.about-estate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.about-estate .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section-header {
@@ -7,12 +26,7 @@
   margin-bottom: 4rem;
 }
 
-.section-title {
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
-}
+/* Section title uses global default from index.css */
 
 .section-title::after {
   content: '';
@@ -26,12 +40,7 @@
   border-radius: 2px;
 }
 
-.section-subtitle {
-  font-size: 1.3rem;
-  color: var(--gray-600);
-  max-width: 600px;
-  margin: 0 auto;
-}
+/* Section subtitle uses global default from index.css */
 
 .estate-content {
   display: grid;

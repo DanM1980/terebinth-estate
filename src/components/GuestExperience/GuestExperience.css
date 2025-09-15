@@ -1,5 +1,5 @@
 .guest-experience {
-  background: linear-gradient(135deg, var(--light-green) 0%, var(--light-blue) 100%);
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-green) 100%);
   position: relative;
 }
 
@@ -26,12 +26,7 @@
   margin-bottom: 4rem;
 }
 
-.section-title {
-  color: var(--primary-blue);
-  margin-bottom: 1rem;
-  position: relative;
-  display: inline-block;
-}
+/* Section title uses global default from index.css */
 
 .section-title::after {
   content: '';
@@ -45,12 +40,7 @@
   border-radius: 2px;
 }
 
-.section-subtitle {
-  font-size: 1.3rem;
-  color: var(--gray-700);
-  max-width: 600px;
-  margin: 0 auto;
-}
+/* Section subtitle uses global default from index.css */
 
 .experiences-grid {
   display: grid;
