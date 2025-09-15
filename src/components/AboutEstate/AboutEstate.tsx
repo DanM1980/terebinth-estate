@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AboutEstate.css';
+import { getImagePath } from '../../config/paths';
 
 const AboutEstate = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,87 +9,87 @@ const AboutEstate = () => {
 
   const estateImages = [
     {
-      src: '/images/about/DSC5126-1.jpg',
+      src: getImagePath('images/about/DSC5126-1.jpg'),
       alt: 'Luxury countryside suite exterior view',
       title: 'Elegant Exterior'
     },
     {
-      src: '/images/about/DSC5139-HDR-1.jpg',
+      src: getImagePath('images/about/DSC5139-HDR-1.jpg'),
       alt: 'Beautiful garden and landscape view',
       title: 'Garden Views'
     },
     {
-      src: '/images/about/DSC5143-1.jpg',
+      src: getImagePath('images/about/DSC5143-1.jpg'),
       alt: 'Modern suite interior with natural lighting',
       title: 'Modern Interiors'
     },
     {
-      src: '/images/about/DSC5145-2.jpg',
+      src: getImagePath('images/about/DSC5145-2.jpg'),
       alt: 'Spacious living area with panoramic windows',
       title: 'Living Spaces'
     },
     {
-      src: '/images/about/DSC5146-1.jpg',
+      src: getImagePath('images/about/DSC5146-1.jpg'),
       alt: 'Private outdoor area with mountain views',
       title: 'Private Terraces'
     },
     {
-      src: '/images/about/DSC5152-HDR-1.jpg',
+      src: getImagePath('images/about/DSC5152-HDR-1.jpg'),
       alt: 'Luxury bedroom with elegant furnishings',
       title: 'Luxury Bedrooms'
     },
     {
-      src: '/images/about/DSC5159-1.jpg',
+      src: getImagePath('images/about/DSC5159-1.jpg'),
       alt: 'Modern bathroom with premium fixtures',
       title: 'Premium Bathrooms'
     },
     {
-      src: '/images/about/DSC5160-2.jpg',
+      src: getImagePath('images/about/DSC5160-2.jpg'),
       alt: 'Relaxation area with comfortable seating',
       title: 'Relaxation Areas'
     },
     {
-      src: '/images/about/DSC5164-1.jpg',
+      src: getImagePath('images/about/DSC5164-1.jpg'),
       alt: 'Dining area perfect for group gatherings',
       title: 'Group Dining'
     },
     {
-      src: '/images/about/DSC5167-1.jpg',
+      src: getImagePath('images/about/DSC5167-1.jpg'),
       alt: 'Outdoor seating with stunning views',
       title: 'Outdoor Seating'
     },
     {
-      src: '/images/about/DSC5188-HDR-1.jpg',
+      src: getImagePath('images/about/DSC5188-HDR-1.jpg'),
       alt: 'Panoramic view of the Golan Heights',
       title: 'Mountain Views'
     },
     {
-      src: '/images/about/DSC5201-1.jpg',
+      src: getImagePath('images/about/DSC5201-1.jpg'),
       alt: 'Peaceful garden setting for meditation',
       title: 'Meditation Gardens'
     },
     {
-      src: '/images/about/DSC5203-1.jpg',
+      src: getImagePath('images/about/DSC5203-1.jpg'),
       alt: 'Traditional stone architecture details',
       title: 'Traditional Architecture'
     },
     {
-      src: '/images/about/DSC5204-1.jpg',
+      src: getImagePath('images/about/DSC5204-1.jpg'),
       alt: 'Modern amenities with rustic charm',
       title: 'Modern Amenities'
     },
     {
-      src: '/images/about/DSC5207-1.jpg',
+      src: getImagePath('images/about/DSC5207-1.jpg'),
       alt: 'Comfortable lounge area for groups',
       title: 'Group Lounges'
     },
     {
-      src: '/images/about/DSC5212-1.jpg',
+      src: getImagePath('images/about/DSC5212-1.jpg'),
       alt: 'Beautiful sunset view from the estate',
       title: 'Sunset Views'
     },
     {
-      src: '/images/about/DSC5213-1.jpg',
+      src: getImagePath('images/about/DSC5213-1.jpg'),
       alt: 'Peaceful morning view of the landscape',
       title: 'Morning Serenity'
     }
@@ -214,7 +215,7 @@ const AboutEstate = () => {
                     onClick={() => setCurrentImageIndex(index)}
                   >
                     <img
-                      src={`/images/about/thumbnails/${image.src.split('/').pop()}`}
+                      src={getImagePath(`images/about/thumbnails/${image.src.split('/').pop()}`)}
                       alt={image.alt}
                       loading="lazy"
                     />

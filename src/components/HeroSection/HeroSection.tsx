@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import './HeroSection.css';
+import { getImagePath, getPublicPath } from '../../config/paths';
 
 const HeroSection: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -8,15 +9,15 @@ const HeroSection: React.FC = () => {
 
   // Array of video sources
   const videoSources: string[] = useMemo(() => [
-    '/videos/hero/fields.mp4',
-    '/videos/hero/lake.mp4'
+    getPublicPath('videos/hero/fields.mp4'),
+    getPublicPath('videos/hero/lake.mp4')
   ], []);
 
   // Array of hero background images (fallback)
   const heroImages: string[] = useMemo(() => [
-    '/images/hero/DJI_0011_10.jpg',
-    '/images/hero/DJI_0011_13.jpg',
-    '/images/hero/GX010233_stabilized.mp4_snapshot_00.44.705~2.jpg'
+    getImagePath('images/hero/DJI_0011_10.jpg'),
+    getImagePath('images/hero/DJI_0011_13.jpg'),
+    getImagePath('images/hero/GX010233_stabilized.mp4_snapshot_00.44.705~2.jpg')
   ], []);
 
   // Select video randomly on each page load

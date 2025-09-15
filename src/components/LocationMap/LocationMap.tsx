@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import './LocationMap.css';
+import { getImagePath, getPublicPath } from '../../config/paths';
 
 // Types
 interface NearbySite {
@@ -109,7 +110,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
                margin-bottom: 5px;
              ">
                <img 
-                 src="/logo.png" 
+                 src={getPublicPath('logo.png')} 
                  alt="Terebinth Estate Logo" 
                  style="
                    width: 45px;
@@ -160,7 +161,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
                 ">
                    <div style="margin-bottom: 0.5rem;">
                      <img 
-                       src="/logo.png" 
+                       src={getPublicPath('logo.png')} 
                        alt="Terebinth Estate Logo" 
                        style="
                          width: 40px;
@@ -318,7 +319,7 @@ const MapComponent: React.FC<MapComponentProps> = ({
               ">
                  <div style="margin-bottom: 0.5rem;">
                    <img 
-                     src="/logo.png" 
+                     src={getPublicPath('logo.png')} 
                      alt="Terebinth Estate Logo" 
                      style="
                        width: 40px;
@@ -575,22 +576,27 @@ const LocationMap: React.FC = () => {
   useEffect(() => {
     const loadNearbySites = async () => {
       try {
-        const response = await fetch('/data/nearby-sites.json');
+        const response = await fetch(getPublicPath('data/nearby-sites.json'));
         const data = await response.json();
-        setNearbySites(data.nearbySites);
+        // Update image paths to use relative paths
+        const updatedSites = data.nearbySites.map((site: any) => ({
+          ...site,
+          image: getImagePath(site.image)
+        }));
+        setNearbySites(updatedSites);
       } catch (error) {
         console.error('Error loading nearby sites:', error);
         // Fallback data in case JSON fails to load
         setNearbySites([
-          {
-            name: 'Sea of Galilee',
-            distance: '15 minutes',
-            description: 'Where Jesus walked on water and performed many miracles',
+    {
+      name: 'Sea of Galilee',
+      distance: '15 minutes',
+      description: 'Where Jesus walked on water and performed many miracles',
             icon: '🌊',
             coordinates: { latitude: 32.7940, longitude: 35.5900 },
             phone: '+972-4-672-0000',
             website: 'https://www.galilee.gov.il',
-            image: '/images/nearby-sites/sea-of-galilee.jpg',
+            image: getImagePath('images/nearby-sites/sea-of-galilee.jpg'),
             images: [
               'https://images.unsplash.com/photo-1544966503-7cc4ac81b4c4?w=800&h=600&fit=crop&q=80',
               'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&q=80',
@@ -740,8 +746,8 @@ const LocationMap: React.FC = () => {
                               margin: '0 auto 1rem'
                             }}></div>
                             <p style={{ color: '#666', fontSize: '1.1rem' }}>Loading map...</p>
-                          </div>
-                        </div>
+                </div>
+              </div>
                       );
                   }
                 }}
@@ -787,25 +793,25 @@ const LocationMap: React.FC = () => {
             {loading ? (
               <div className="loading-message">Loading nearby sites...</div>
             ) : (
-              <div className="sites-grid">
-                {nearbySites.map((site, index) => (
-                  <div
-                    key={index}
-                    className={`site-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
+            <div className="sites-grid">
+              {nearbySites.map((site, index) => (
+                <div
+                  key={index}
+                  className={`site-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
                     style={{ animationDelay: `${index * 0.1}s`, cursor: 'pointer' }}
                     onClick={() => handleSiteClick(index)}
-                  >
-                    <div className="site-icon">
-                      <span>{site.icon}</span>
-                    </div>
-                    <div className="site-content">
-                      <h4>{site.name}</h4>
-                      <p className="site-distance">{site.distance} drive</p>
-                      <p className="site-description">{site.description}</p>
-                    </div>
+                >
+                  <div className="site-icon">
+                    <span>{site.icon}</span>
                   </div>
-                ))}
-              </div>
+                  <div className="site-content">
+                    <h4>{site.name}</h4>
+                    <p className="site-distance">{site.distance} drive</p>
+                    <p className="site-description">{site.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
             )}
           </div>
 

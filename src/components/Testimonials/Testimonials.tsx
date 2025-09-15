@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
+import { getImagePath } from '../../config/paths';
 
 const Testimonials = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,7 +11,7 @@ const Testimonials = () => {
       id: 1,
       name: 'Sarah & Michael Johnson',
       location: 'Texas, USA',
-      image: '/images/testimonials/testimonial-1.jpg',
+      image: getImagePath('images/testimonials/testimonial-1.jpg'),
       quote: 'Staying here brought us closer to the places we\'ve read about in the Bible. The guided tours were incredible, and our children were captivated by the stories. Truly unforgettable.',
       rating: 5,
       group: 'Family of 5'
@@ -19,7 +20,7 @@ const Testimonials = () => {
       id: 2,
       name: 'Pastor David Williams',
       location: 'California, USA',
-      image: '/images/testimonials/testimonial-2.jpg',
+      image: getImagePath('images/testimonials/testimonial-2.jpg'),
       quote: 'Perfect for our church group – comfort, peace, and faith all in one. The facilities exceeded our expectations, and the spiritual atmosphere was exactly what we needed.',
       rating: 5,
       group: 'Church Group (25 people)'
@@ -28,7 +29,7 @@ const Testimonials = () => {
       id: 3,
       name: 'Maria Rodriguez',
       location: 'Florida, USA',
-      image: '/images/testimonials/testimonial-3.jpg',
+      image: getImagePath('images/testimonials/testimonial-3.jpg'),
       quote: 'The private jacuzzi and heated pool were perfect after long days of touring. But what made it special was waking up to that view of the Sea of Galilee every morning.',
       rating: 5,
       group: 'Couple'
@@ -37,7 +38,7 @@ const Testimonials = () => {
       id: 4,
       name: 'Reverend James Thompson',
       location: 'Georgia, USA',
-      image: '/images/testimonials/testimonial-4.jpg',
+      image: getImagePath('images/testimonials/testimonial-4.jpg'),
       quote: 'Our biblical evening sessions in the garden were transformative. The location, the facilities, and the spiritual guidance provided an experience our congregation will never forget.',
       rating: 5,
       group: 'Church Leadership Retreat'

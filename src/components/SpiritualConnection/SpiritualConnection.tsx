@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SpiritualConnection.css';
+import { getImagePath } from '../../config/paths';
 
 interface SpiritualImage {
   src: string;
@@ -16,77 +17,77 @@ const SpiritualConnection: React.FC = () => {
   // Array of spiritual images
   const spiritualImages: SpiritualImage[] = [
     {
-      src: '/images/spiritual/IMG_20210215_170417-EFFECTS.jpg',
+      src: getImagePath('images/spiritual/IMG_20210215_170417-EFFECTS.jpg'),
       alt: 'Spiritual landscape view',
       title: 'The Promised Land',
       quote: '"And I will give unto thee, and to thy seed after thee, the land wherein thou art a stranger, all the land of Canaan, for an everlasting possession."',
       citation: 'Genesis 17:8'
     },
     {
-      src: '/images/spiritual/IMG_20240127_151929-EDIT.jpg',
+      src: getImagePath('images/spiritual/IMG_20240127_151929-EDIT.jpg'),
       alt: 'Sacred landscape',
       title: 'God\'s Creation',
       quote: '"In the beginning was the Word, and the Word was with God, and the Word was God."',
       citation: 'John 1:1'
     },
     {
-      src: '/images/spiritual/IMG_20240304_145902-EDIT.jpg',
+      src: getImagePath('images/spiritual/IMG_20240304_145902-EDIT.jpg'),
       alt: 'Biblical landscape view',
       title: 'The Lord\'s Prayer',
       quote: '"Our Father which art in heaven, Hallowed be thy name. Thy kingdom come, Thy will be done in earth, as it is in heaven."',
       citation: 'Matthew 6:9-10'
     },
     {
-      src: '/images/spiritual/IMG_20250206_165350.jpg',
+      src: getImagePath('images/spiritual/IMG_20250206_165350.jpg'),
       alt: 'Golan Heights landscape',
       title: 'The Good Shepherd',
       quote: '"The Lord is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters."',
       citation: 'Psalm 23:1-2'
     },
     {
-      src: '/images/spiritual/IMG_20250206_165445.jpg',
+      src: getImagePath('images/spiritual/IMG_20250206_165445.jpg'),
       alt: 'Sea of Galilee view',
       title: 'Walking on Water',
       quote: '"And Peter answered him and said, Lord, if it be thou, bid me come unto thee on the water. And he said, Come."',
       citation: 'Matthew 14:28-29'
     },
     {
-      src: '/images/spiritual/GX010061_stabilized.mp4_snapshot_03.38.365.jpg',
+      src: getImagePath('images/spiritual/GX010061_stabilized.mp4_snapshot_03.38.365.jpg'),
       alt: 'Aerial view of the Holy Land',
       title: 'The Great Commission',
       quote: '"Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost."',
       citation: 'Matthew 28:19'
     },
     {
-      src: '/images/spiritual/IMG_6853.JPG',
+      src: getImagePath('images/spiritual/IMG_6853.JPG'),
       alt: 'Peaceful landscape',
       title: 'Perfect Peace',
       quote: '"Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee."',
       citation: 'Isaiah 26:3'
     },
     {
-      src: '/images/spiritual/DSC_1876.JPG',
+      src: getImagePath('images/spiritual/DSC_1876.JPG'),
       alt: 'Beautiful Golan Heights landscape',
       title: 'God\'s Glory',
       quote: '"The heavens declare the glory of God; and the firmament sheweth his handywork."',
       citation: 'Psalm 19:1'
     },
     {
-      src: '/images/spiritual/DSC_2850.JPG',
+      src: getImagePath('images/spiritual/DSC_2850.JPG'),
       alt: 'Serene landscape view',
       title: 'Be Still and Know',
       quote: '"Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth."',
       citation: 'Psalm 46:10'
     },
     {
-      src: '/images/spiritual/DSC_2881.JPG',
+      src: getImagePath('images/spiritual/DSC_2881.JPG'),
       alt: 'Majestic mountain view',
       title: 'My Help Cometh',
       quote: '"I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the Lord, which made heaven and earth."',
       citation: 'Psalm 121:1-2'
     },
     {
-      src: '/images/spiritual/DSC_0065.JPG',
+      src: getImagePath('images/spiritual/DSC_0065.JPG'),
       alt: 'Beautiful Golan Heights landscape',
       title: 'The Lord\'s Blessing',
       quote: '"The Lord bless thee, and keep thee: The Lord make his face shine upon thee, and be gracious unto thee."',
