@@ -588,10 +588,10 @@ const LocationMap: React.FC = () => {
         console.error('Error loading nearby sites:', error);
         // Fallback data in case JSON fails to load
         setNearbySites([
-    {
-      name: 'Sea of Galilee',
-      distance: '15 minutes',
-      description: 'Where Jesus walked on water and performed many miracles',
+          {
+            name: 'Sea of Galilee',
+            distance: '15 minutes',
+            description: 'Where Jesus walked on water and performed many miracles',
             icon: '🌊',
             coordinates: { latitude: 32.7940, longitude: 35.5900 },
             phone: '+972-4-672-0000',
@@ -746,8 +746,8 @@ const LocationMap: React.FC = () => {
                               margin: '0 auto 1rem'
                             }}></div>
                             <p style={{ color: '#666', fontSize: '1.1rem' }}>Loading map...</p>
-                </div>
-              </div>
+                          </div>
+                        </div>
                       );
                   }
                 }}
@@ -793,25 +793,25 @@ const LocationMap: React.FC = () => {
             {loading ? (
               <div className="loading-message">Loading nearby sites...</div>
             ) : (
-            <div className="sites-grid">
-              {nearbySites.map((site, index) => (
-                <div
-                  key={index}
-                  className={`site-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
+              <div className="sites-grid">
+                {nearbySites.map((site, index) => (
+                  <div
+                    key={index}
+                    className={`site-card ${isVisible ? 'fade-in visible' : 'fade-in'}`}
                     style={{ animationDelay: `${index * 0.1}s`, cursor: 'pointer' }}
                     onClick={() => handleSiteClick(index)}
-                >
-                  <div className="site-icon">
-                    <span>{site.icon}</span>
+                  >
+                    <div className="site-icon">
+                      <span>{site.icon}</span>
+                    </div>
+                    <div className="site-content">
+                      <h4>{site.name}</h4>
+                      <p className="site-distance">{site.distance} drive</p>
+                      <p className="site-description">{site.description}</p>
+                    </div>
                   </div>
-                  <div className="site-content">
-                    <h4>{site.name}</h4>
-                    <p className="site-distance">{site.distance} drive</p>
-                    <p className="site-description">{site.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
             )}
           </div>
 
