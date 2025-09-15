@@ -2,6 +2,7 @@
   "name": "terebinth-estate",
   "version": "1.0.0",
   "description": "Luxury countryside suites in the Golan Heights for Christian pilgrims",
+  "homepage": "/ter/",
   "private": true,
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.2.0",
@@ -13,7 +14,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:subdir": "REACT_APP_BASE_PATH=/ter/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

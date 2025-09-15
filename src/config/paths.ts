@@ -1,7 +1,9 @@
 // Base path configuration for deployment
 // This allows the app to work in both root and subdirectory deployments
 
-const BASE_PATH = process.env.REACT_APP_BASE_PATH || '/';
+// Import package.json to get homepage field
+const packageJson = require('../../package.json');
+const BASE_PATH = packageJson.homepage || '/';
 
 export const getImagePath = (imagePath: string): string => {
   // Remove leading slash if present

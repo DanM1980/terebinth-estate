@@ -4,43 +4,41 @@ This project supports deployment in both root directory and subdirectory configu
 
 ## Configuration
 
-The project uses an environment variable `REACT_APP_BASE_PATH` to determine the base path for all assets.
+The project uses the `homepage` field in `package.json` to determine the base path for all assets.
 
-### Default Configuration (Root Deployment)
-- `REACT_APP_BASE_PATH=/` (default)
-- All assets are served from the root of the domain
-- Example: `https://example.com/images/hero/image.jpg`
-
-### Subdirectory Configuration
-- `REACT_APP_BASE_PATH=/ter/`
+### Current Configuration (Subdirectory Deployment)
+- `homepage: "/ter/"` in `package.json`
 - All assets are served from the `/ter/` subdirectory
 - Example: `https://example.com/ter/images/hero/image.jpg`
 
+### For Root Deployment
+To deploy to the root directory, change the `homepage` field in `package.json`:
+```json
+{
+  "homepage": "/"
+}
+```
+
 ## Build Commands
 
-### For Root Deployment
+### For Subdirectory Deployment (Current)
 ```bash
 npm run build
 ```
 
-### For Subdirectory Deployment
-```bash
-# Windows
-set REACT_APP_BASE_PATH=/ter/ && npm run build
-
-# Linux/Mac
-REACT_APP_BASE_PATH=/ter/ npm run build
-```
+### For Root Deployment
+1. Change `homepage` in `package.json` to `"/"`
+2. Run: `npm run build`
 
 ## How It Works
 
-1. **Path Configuration**: The `src/config/paths.ts` file contains utility functions that handle path resolution based on the `REACT_APP_BASE_PATH` environment variable.
+1. **Path Configuration**: The `src/config/paths.ts` file contains utility functions that handle path resolution based on the `homepage` field in `package.json`.
 
 2. **Image Paths**: All image references in components use the `getImagePath()` function to ensure correct path resolution.
 
 3. **Public Assets**: Public assets like JSON files use the `getPublicPath()` function.
 
-4. **Dynamic Resolution**: Paths are resolved at runtime, allowing the same build to work in different deployment configurations.
+4. **Build-time Resolution**: The `homepage` field in `package.json` tells React's build process where to expect the app to be hosted, ensuring all asset paths are correctly prefixed.
 
 ## Components Updated
 
