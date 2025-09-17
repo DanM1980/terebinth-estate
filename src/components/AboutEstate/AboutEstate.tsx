@@ -5,6 +5,7 @@ import { getImagePath } from '../../config/paths';
 const AboutEstate = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentGroupIndex, setCurrentGroupIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const estateImages = [
@@ -95,6 +96,16 @@ const AboutEstate = () => {
     }
   ];
 
+  // Group images into chunks of 10
+  const imagesPerGroup = 10;
+  const imageGroups = [];
+  for (let i = 0; i < estateImages.length; i += imagesPerGroup) {
+    imageGroups.push(estateImages.slice(i, i + imagesPerGroup));
+  }
+
+  const currentGroup = imageGroups[currentGroupIndex] || [];
+  const totalGroups = imageGroups.length;
+
   const amenities = [
     {
       icon: '🏠',
@@ -151,25 +162,41 @@ const AboutEstate = () => {
   }, []);
 
   useEffect(() => {
+    if (isLightboxOpen) return; // Don't auto-rotate when lightbox is open
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
-        prevIndex === estateImages.length - 1 ? 0 : prevIndex + 1
+        prevIndex === currentGroup.length - 1 ? 0 : prevIndex + 1
       );
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [estateImages.length]);
+  }, [currentGroup.length, isLightboxOpen]);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === estateImages.length - 1 ? 0 : prevIndex + 1
+      prevIndex === currentGroup.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? estateImages.length - 1 : prevIndex - 1
+      prevIndex === 0 ? currentGroup.length - 1 : prevIndex - 1
     );
+  };
+
+  const nextGroup = () => {
+    setCurrentGroupIndex((prevIndex) =>
+      prevIndex === totalGroups - 1 ? 0 : prevIndex + 1
+    );
+    setCurrentImageIndex(0);
+  };
+
+  const prevGroup = () => {
+    setCurrentGroupIndex((prevIndex) =>
+      prevIndex === 0 ? totalGroups - 1 : prevIndex - 1
+    );
+    setCurrentImageIndex(0);
   };
 
   return (
@@ -189,38 +216,46 @@ const AboutEstate = () => {
             <div className={`gallery-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
               <div className="gallery-main">
                 <img
-                  src={estateImages[currentImageIndex].src}
-                  alt={estateImages[currentImageIndex].alt}
+                  src={currentGroup[currentImageIndex]?.src}
+                  alt={currentGroup[currentImageIndex]?.alt}
                   loading="lazy"
                   onClick={() => setIsLightboxOpen(true)}
                   style={{ cursor: 'pointer' }}
                 />
                 <div className="gallery-overlay">
-                  <h3>{estateImages[currentImageIndex].title}</h3>
+                  <h3>{currentGroup[currentImageIndex]?.title}</h3>
                   <p>Click to view full size</p>
                 </div>
-                <button className="gallery-nav prev" onClick={prevImage}>
-                  ‹
-                </button>
-                <button className="gallery-nav next" onClick={nextImage}>
-                  ›
-                </button>
               </div>
 
-              <div className="gallery-thumbnails">
-                {estateImages.map((image, index) => (
-                  <button
-                    key={index}
-                    className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                    onClick={() => setCurrentImageIndex(index)}
-                  >
-                    <img
-                      src={getImagePath(`images/about/thumbnails/${image.src.split('/').pop()}`)}
-                      alt={image.alt}
-                      loading="lazy"
-                    />
-                  </button>
-                ))}
+              <div className="gallery-thumbnails-container">
+                <div className="gallery-thumbnails">
+                  {currentGroup.map((image, index) => (
+                    <button
+                      key={index}
+                      className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                      onClick={() => setCurrentImageIndex(index)}
+                    >
+                      <img
+                        src={getImagePath(`images/about/thumbnails/${image.src.split('/').pop()}`)}
+                        alt={image.alt}
+                        loading="lazy"
+                      />
+                    </button>
+                  ))}
+                </div>
+
+                {/* Group Navigation */}
+                {totalGroups > 1 && (
+                  <>
+                    <button className="group-nav prev" onClick={prevGroup}>
+                      ‹‹
+                    </button>
+                    <button className="group-nav next" onClick={nextGroup}>
+                      ››
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -272,12 +307,12 @@ const AboutEstate = () => {
               ×
             </button>
             <img
-              src={estateImages[currentImageIndex].src}
-              alt={estateImages[currentImageIndex].alt}
+              src={currentGroup[currentImageIndex]?.src}
+              alt={currentGroup[currentImageIndex]?.alt}
             />
             <div className="lightbox-info">
-              <h3>{estateImages[currentImageIndex].title}</h3>
-              <p>{currentImageIndex + 1} / {estateImages.length}</p>
+              <h3>{currentGroup[currentImageIndex]?.title}</h3>
+              <p>{currentImageIndex + 1} / {currentGroup.length}</p>
             </div>
             <button
               className="lightbox-nav prev"

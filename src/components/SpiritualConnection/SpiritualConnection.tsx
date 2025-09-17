@@ -13,6 +13,8 @@ interface SpiritualImage {
 const SpiritualConnection: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [isAutoRotating, setIsAutoRotating] = useState<boolean>(true);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   // Array of spiritual images
   const spiritualImages: SpiritualImage[] = [
@@ -112,25 +114,47 @@ const SpiritualConnection: React.FC = () => {
 
   // Auto-rotate images
   useEffect(() => {
+    if (!isAutoRotating || isHovered) return;
+
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === spiritualImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 12000);
+    }, 7000);
 
     return () => clearInterval(interval);
-  }, [spiritualImages.length]);
+  }, [spiritualImages.length, isAutoRotating, isHovered]);
 
   const nextImage = (): void => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === spiritualImages.length - 1 ? 0 : prevIndex + 1
     );
+    // Pause auto-rotation when manually changing images
+    setIsAutoRotating(false);
+    // Resume auto-rotation after 30 seconds
+    setTimeout(() => {
+      setIsAutoRotating(true);
+    }, 30000);
   };
 
   const prevImage = (): void => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? spiritualImages.length - 1 : prevIndex - 1
     );
+    // Pause auto-rotation when manually changing images
+    setIsAutoRotating(false);
+    // Resume auto-rotation after 30 seconds
+    setTimeout(() => {
+      setIsAutoRotating(true);
+    }, 30000);
+  };
+
+  const handleMouseEnter = (): void => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = (): void => {
+    setIsHovered(false);
   };
 
   return (
@@ -153,7 +177,11 @@ const SpiritualConnection: React.FC = () => {
           </div>
 
           <div className="spiritual-image">
-            <div className={`image-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}>
+            <div
+              className={`image-container ${isVisible ? 'fade-in visible' : 'fade-in'}`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <img
                 src={spiritualImages[currentImageIndex].src}
                 alt={spiritualImages[currentImageIndex].alt}
