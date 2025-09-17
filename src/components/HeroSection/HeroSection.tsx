@@ -117,7 +117,7 @@ const HeroSection: React.FC = () => {
         <div className="container">
           <div className="hero-text">
             <h1 className="hero-title fade-in">
-              Walk in the Footsteps of Jesus – Stay at the Heart of the Galilee
+              Walk in the Footsteps of Jesus – Stay at the Heart of the Golan
             </h1>
             <h2 className="hero-subtitle fade-in">
               Luxury countryside suites in the Golan Heights, just minutes from the Sea of Galilee and the Jordan River.

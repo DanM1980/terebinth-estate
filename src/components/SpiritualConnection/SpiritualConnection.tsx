@@ -52,13 +52,6 @@ const SpiritualConnection: React.FC = () => {
       citation: 'Matthew 14:28-29'
     },
     {
-      src: getImagePath('images/spiritual/GX010061_stabilized.mp4_snapshot_03.38.365.jpg'),
-      alt: 'Aerial view of the Holy Land',
-      title: 'The Great Commission',
-      quote: '"Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost."',
-      citation: 'Matthew 28:19'
-    },
-    {
       src: getImagePath('images/spiritual/IMG_6853.JPG'),
       alt: 'Peaceful landscape',
       title: 'Perfect Peace',
@@ -123,7 +116,7 @@ const SpiritualConnection: React.FC = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === spiritualImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 6000);
+    }, 12000);
 
     return () => clearInterval(interval);
   }, [spiritualImages.length]);

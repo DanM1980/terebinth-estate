@@ -155,7 +155,7 @@ const AboutEstate = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === estateImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [estateImages.length]);

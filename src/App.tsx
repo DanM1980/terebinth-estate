@@ -4,7 +4,7 @@ import SpiritualConnection from './components/SpiritualConnection';
 import LocationMap from './components/LocationMap';
 import AboutEstate from './components/AboutEstate';
 import GuestExperience from './components/GuestExperience';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import ContactCTA from './components/ContactCTA';
 import './App.css';
 
@@ -16,7 +16,7 @@ const App: React.FC = () => {
       <LocationMap />
       <AboutEstate />
       <GuestExperience />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ContactCTA />
     </div>
   );
